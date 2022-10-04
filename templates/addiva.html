@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$" />
+$endif$
+$if(keywords)$
+  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <style>
+    $styles.html()$
+@import url(https://fonts.googleapis.com/css?family=Lato:700,700italic|Merriweather:300,300italic,700);
+
+body {
+    background-color:#f1f1f1;
+    font-family: Merriweather;
+    font-weight: 300;
+    font-size: 100%;     /* flexible baseline */
+    line-height: 1.2;
+    text-align: center; /*For IE6 Shenanigans*/
+
+    counter-reset : h2;
+
+    border: none !important;
+}
+
+h1, h2, h3,  h4, h5, h6 {
+    font-family: Lato;
+    font-weight: 700;
+}
+
+h1 {
+    text-align: left;
+    border: none;
+}
+
+h2 {
+    border-bottom: 1px solid #f2f1f0;
+}
+
+p {
+    text-align: justify;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin: 1em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  box-shadow: none;
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+p code {
+	border: 1px solid #777;
+}
+
+pre {
+	width: 98%;
+	padding: 0;
+	margin: 0;
+	padding: 5px;
+	overflow: auto;
+	overflow-y: hidden;
+	font-size: 12px;
+	line-height: 20px;
+	background: #efefef;
+	border: 1px solid #777;
+	background: url(lines.png) repeat 0 0;
+}
+pre code {
+	color: #333;
+}
+
+strong {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+address {
+    border-top: 1px solid #f2f1f0;
+    margin-top: 1em;
+}
+
+figure {
+    /* display: inline-block;	/\* You may want this instead ... *\/ */
+    display: block;		/* This centers the whole figure on the available page */
+    text-align: center;
+    border: thin silver solid;
+}
+figure figcaption {
+    text-align: center;
+}
+img {
+    display:       block;
+    margin-left:   auto;
+    margin-right:  auto;
+    padding-left:  1em;
+
+    max-width: 100%;
+    height: auto!important;
+}
+
+dl.config dt {
+    font-family: monospace;
+}
+
+dl.config dd {
+    text-align: justify;
+}
+
+.noborder {
+    border: none;
+    border-bottom: none;
+}
+
+.hide {
+    display: none;
+}
+
+.plain {
+    border-bottom: none;
+    background: #ffffff;
+}
+
+table {
+    margin-left:  auto;
+    margin-right: auto;
+    caption-side: bottom;
+}
+
+table, th, td {
+    border: 1px solid #dfe2e5;
+    border-collapse: collapse;
+    padding: 3px 13px;
+}
+th {
+    font-weight: 600;
+}
+td {
+    vertical-align: bottom;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f8fa;
+}
+
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.wrapper {
+    text-align: left;
+}
+
+.page-header, .page-header-space {
+    height: 122px;
+    margin-bottom: 1em;
+}
+
+.page-footer, .page-footer-space {
+    height: 1.5em;
+    text-align: left;
+}
+.page-footer {
+    margin-top: 1em;
+}
+
+.heading {
+    width: 99.6%;
+    margin-left: 1px;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.top {
+    vertical-align: top;
+    background: #ffffff;
+}
+
+table.heading tr th td {
+    width: 100%;
+    border: 1px solid #dfe2e5;
+    /* border: none; */
+    /* border-bottom: none; */
+}
+
+.heading table tr td {
+    /* padding: 2px 2px; */
+    /* background-color: #ffffff; */
+    /* border: none; */
+    /* border-bottom: none; */
+}
+
+div.small {
+    font-size: 8px;
+}
+
+.heading td.logo {
+    width: 40%;
+    height: 50px;
+    background-image:    url(logo.png);
+    background-position: left 0px;
+    background-repeat:   no-repeat;
+    /* background-size:     contain; */
+    background-size: auto 65px;
+}
+
+/* Based on ideas from https://medium.com/@Idan_Co/the-ultimate-print-html-template-with-header-footer-568f415f6d2a */
+@media print {
+    /* This hack allows the logo to be displayed in print */
+    body {
+	/* Chrome & Safari */
+	-webkit-print-color-adjust:exact;
+	/* Firefox */
+	color-adjust:exact;
+
+	/* Firefox inherits backgroun from top body, Chrome is none */
+	background: none;
+    }
+
+    @page main {
+	size: auto;   /* auto is the initial value */
+
+	/* this affects the margin in the printer settings */
+	margin: 10mm 10mm 10mm 10mm;
+    }
+
+    .hide {
+	display: block;
+    }
+    .page-header {
+	position: fixed;
+	top: 0mm;
+	width: 100%;
+    }
+
+    .page-footer {
+    	display: block;
+    	position: fixed;
+    	bottom: 0;
+    	width: 100%;
+    	border-top: 1px solid #dfe2e5;
+    	margin: none;
+    }
+
+    /* thead {display: table-header-group;} */
+    /* tfoot {display: table-footer-group;} */
+
+    button {display: none;}
+    body {margin: 0;}
+
+    .sidebar {
+	display: none !important;
+    }
+
+    p {
+	orphans: 3;
+	widows:  2;
+    }
+
+    /* section {page-break-before: always;} */
+    /* h2 {page-break-before: always;} */
+    h1 h2 h3 h4 h5 h6 table {
+	page-break-inside: avoid;
+	page-break-after: avoid;
+    }
+
+    p, blockquote, ul, ol, dl, pre {
+	 page-break-inside: avoid;
+    }
+
+    h1 {
+	force logo in print
+	background: url("logo.png") no-repeat;
+	background-position: 50% 0%;
+
+	-webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+	color-adjust: exact !important;                 /* Firefox */
+
+	/* page-break-after: always; */
+	background-position: 50% 50%;
+	/* padding-top: 500px; */
+	font-size: 3em;
+
+	display: block;
+	counter-reset: h2counter;
+    }
+
+    h2:before {
+	content : counter(h2,decimal) ". ";
+	counter-increment : h2;
+    }
+    h2 {
+	counter-reset : h3;
+    }
+    h3:before {
+	content : counter(h2,decimal) "." counter(h3,decimal) ". ";
+	counter-increment : h3;
+    }
+
+    h3 {
+	counter-reset : h4;
+    }
+/*
+    h4:before {
+	content : counter(h2,decimal) "." counter(h3,decimal) "." counter(h4,decimal) ". ";
+	counter-increment : h4;
+    }
+
+    h4 {
+	counter-reset : h5;
+    }
+
+    h5:before {
+	content : counter(h2,decimal) "." counter(h3,decimal) "." counter(h4,decimal) "." counter(h5,decimal) ". ";
+	counter-increment : h5;
+    }
+
+    h5 {
+	counter-reset : h6;
+    }
+*/
+    h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before {
+	content : "";
+	counter-increment : none;
+    }
+}
+
+
+@media screen {
+    /* Ignore space reserv for non print media */
+    .page-header-space, .page-footer-space {
+	display: none;
+    }
+    .page-header {
+	width: 100%;
+    }
+    .page-footer {
+	width: 100%;
+	border-top: 1px solid #dfe2e5; /* for demo */
+	padding-top: 10px;
+    }
+
+    body, html {
+	min-height: 100%;
+    }
+    /* The sidebar menu */
+    .sidebar {
+	height: 100%;
+	width: 160px; /* Set the width of the sidebar */
+	position: fixed;
+	float: left;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	overflow: auto;
+	background-color: white;
+	text-align: left;
+	box-shadow: 1px 1px 10px #BBB;
+	padding: 6px 8px 6px 16px;
+    }
+
+    /* The navigation menu links */
+    .sidebar a {
+	padding: 6px 8px 6px 16px;
+	/* text-decoration: none; */
+	font-size: 0.75em;
+	/* color: #818181; */
+	display: block;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .sidebar a:hover {
+	/* color: #f1f1f1; */
+    }
+
+    .sidebar h3 {
+	border-bottom: 1px solid #ddd;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+	font-size: 1.1em;
+    }
+    .sidebar {
+	display: none;
+    }
+    .wrapper {
+	width:      720px;
+
+	padding:  0.5em;
+	margin:   0.5em auto;
+
+	/* border-radius: 10px; */
+	border:        1px solid #c8c5c2;
+
+	background-color: white;
+    }
+    #right {
+    }
+    #left {
+    }
+    #leftcontent {
+    }
+    #rightcontent {
+    }
+}
+
+@media screen and (min-width: 920px) {
+    body {
+	background-color: #f1f1f1;
+    }
+
+    .sidebar {
+	display: none;
+    }
+    .wrapper {
+	width:      720px;
+	padding: 2em;
+	/* margin-top:   50px; */
+	/* margin-bottom:50px; */
+	/* margin-right: auto; */
+	/* margin-left:  200px; */
+	margin: auto;
+
+	border-radius: 10px;
+	border:        1px solid #c8c5c2;
+
+	background-color: white;
+	box-shadow: 1px 1px 10px #BBB;
+    }
+
+    #right {
+	float: right;
+	width:  49%;
+    }
+
+    #left {
+	float: left;
+	width:  49%;
+    }
+
+    #leftcontent {
+	padding-right: 1.5em;
+    }
+
+    #rightcontent {
+	padding-left:  1.5em;
+    }
+}
+  </style>
+$for(css)$
+  <link rel="stylesheet" type="text/css" href="$css$" />
+$endfor$
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+<body>
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+<div class="sidebar">
+  <img src="logo.png">
+$if(toc)$
+<nav id="$idprefix$TOC" role="doc-toc">
+$if(toc-title)$
+<h2 id="$idprefix$toc-title">$toc-title$</h2>
+$endif$
+$table-of-contents$
+</nav>
+$endif$
+$endif$
+</div>
+<div class="wrapper">
+  <table class="noborder">
+    <thead>
+      <tr class="noborder">
+        <td class="noborder">
+	  <div class="page-header" style="text-align: center">
+	    <table class="heading noborder">
+	      <colgroup>
+		<col span="1" style="width: 30%;">
+		<col span="1" style="width: 15%;">
+		<col span="1" style="width: 55%;">
+	      </colgroup>
+	      <tbody>
+	      <tr class="noborder">
+		<td class="logo noborder">&nbsp;</td>
+$for(document)$
+		<td class="noborder" colspan="2">
+$if(document.organisation)$
+		  <div class="small">Organisation<br /><br /></div>
+		  $document.organisation$
+$endif$
+		</td>
+	      </tr>
+	      <tr class="heading">
+		<td class="top">
+		  <div class="small">Prepared by<br /><br /></div>
+$if(document.prepared)$
+		  $document.prepared$
+$else$
+		  $author$
+$endif$
+		</td>
+		<td colspan="2" class="top">
+		  <div class="small" >Document<br /><br /></div>
+$if(document.name)$
+		  $document.name$
+$else$
+		  $title$
+$endif$
+		</td>
+	      </tr>
+	      <tr class="heading">
+		<td class="top"><div class="small">Approved by<br /><br /></div>
+$if(document.prepared)$
+		  $document.approved$
+$endif$
+		</td>
+		<td class="top"><div class="small">Date<br /><br /></div>
+$if(date)$
+		  $date$
+$else$
+		  $today$
+$endif$
+		</td>
+		<td class="top"><div class="small">Document N:o<br /><br /></div>
+$if(document.number)$
+		  $document.number$$gitrev$
+$else$
+		  $gitversion$
+$endif$
+		</td>
+	      </tr>
+$endfor$
+	      </tbody>
+	    </table>
+	  </div>
+	  <!--place holder for the fixed-position header-->
+          <div class="page-header-space hide"></div>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="noborder">
+        <td class="noborder">
+	  <div style="float:right;">
+	    <br /><button type="button" onClick="let f=window.location.href; window.open(f.substr(0, f.lastIndexOf('.')) + '.pdf')" style="">&#128442;</button>
+	    <button type="button" onClick="window.print()" style="">&#128438;</button>
+	  </div>
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+	</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr class="noborder">
+        <td class="noborder">
+$if(copyright)$
+	  <div class="page-footer">
+$if(copyright.holder)$
+$if(copyright.year)$
+	    Copyright &copy;$copyright.year$&nbsp;$copyright.holder$
+$else$
+	    Copyright &copy;$year$&nbsp;$copyright.holder$
+$endif$
+$else$
+	    $copyright$
+$endif$
+	  </div>
+$else$
+          <div class="page-footer-space hide"></div>
+$endif$
+	  <div id="page-number"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+</body>
+</html>

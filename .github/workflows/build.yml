@@ -1,0 +1,43 @@
+name: Document Generator
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+env:
+  ARCHIVE: ael-docgen-latest
+
+jobs:
+  docgen:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/addiva-elektronik/pandoc
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate documentation
+        run: |
+          git config --global --add safe.directory /__w/docgen/docgen
+          make
+      - name: Create VCS info file
+        run: |
+          /bin/echo -e                         \
+                "ref:    $GITHUB_REF\ncommit:" \
+                "$GITHUB_SHA\nbuild:"          \
+                " $(date +"%Y-%m-%dT%H:%M:%SZ")" > output/info.txt
+      - name: Package ZIP
+        run: |
+          mv output $ARCHIVE
+          zip -r $ARCHIVE.zip   $ARCHIVE/
+          md5sum $ARCHIVE.zip > $ARCHIVE.zip.md5
+      - name: Upload ZIP to latest
+        uses: pyTooling/Actions/releaser@main
+        with:
+          tag: latest
+          rm: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ael*.zip*
