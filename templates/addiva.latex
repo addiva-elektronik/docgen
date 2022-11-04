@@ -527,9 +527,9 @@ $else$
 $endif$
 
 $if(copyright.holder)$
-\newcommand{\thecopyright}{Copyright~\copyright\ \copyrightyear\ $copyright.holder$}
+\newcommand{\thecopyright}{Copyright~\textcopyright\ \copyrightyear\ $copyright.holder$}
 $elseif(copyright.year)$
-\newcommand{\thecopyright}{Copyright~\copyright\ \copyrightyear\ \companyname}
+\newcommand{\thecopyright}{Copyright~\textcopyright\ \copyrightyear\ \companyname}
 $else$
 \newcommand{\thecopyright}{$copyright$}
 $endif$
