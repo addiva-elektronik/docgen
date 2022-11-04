@@ -17,7 +17,7 @@ args    += -V gitversion="$(gitver)" -V today="$(shell date --iso)" -V year=$(sh
 	pandoc -t html $(args) -o $@ $<
 
 %.pdf: %.md
-	pandoc -t pdf $(args) -o $@ $<
+	pandoc -t pdf --pdf-engine=xelatex --listings $(args) -o $@ $<
 
 all: build
 
@@ -27,7 +27,7 @@ build: $(objs)
 		dir=`dirname $$obj`;					\
 		mkdir -p output/$$dir;					\
 		mv $$obj output/$$dir/;					\
-		cp -f $(docgen)/templates/logo.png output/$$dir/;		\
+		cp -f $(docgen)/templates/logo.png output/$$dir/;	\
 		for img in `find $$dir -name '*.png'`; do		\
 			cp -vf $$img output/$$dir/$$igmp;		\
 		done;							\

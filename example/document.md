@@ -5,14 +5,11 @@ document:
   organisation: Addiva Elektronik AB
   approved:
 copyright:
-  holder: Addiva Elektronik AB
+  year: 1974-2022
 classoption: twoside
 header-includes:
   - \usepackage{draftwatermark}
-fontenc: LY1
 fontsize: 11pt
-fontfamily: sourcesanspro
-fontfamilyoptions: default
 toc: true
 ---
 

@@ -129,12 +129,18 @@ $endif$
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$else$
+  \setmainfont[Numbers=OldStyle]{SourceSerifPro-Regular.otf}
 $endif$
 $if(sansfont)$
   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$else$
+  \setsansfont[Numbers=OldStyle]{SourceSansPro-Regular.otf}
 $endif$
 $if(monofont)$
   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
+$else$
+  \setmonofont[Scale=0.9]{SourceCodePro-Regular.otf}
 $endif$
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
