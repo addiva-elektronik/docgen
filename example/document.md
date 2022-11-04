@@ -20,9 +20,29 @@ This document system for generating PDF and HTML files from [Markdown][]
 text is based on [Pandoc][].  Inspiration for the templates comes from a
 LaTeX package created back in 2001, called [technics.sty][].
 
+```
+__________________|      |____________________________________________
+     ,--.    ,--.          ,--.   ,--.
+    |oo  | _  \  `.       | oo | |  oo|
+o  o|~~  |(_) /   ;       | ~~ | |  ~~|o  o  o  o  o  o  o  o  o  o  o
+    |/\/\|   '._,'        |/\/\| |/\/\|
+__________________        ____________________________________________
+                  |      |dwb
+```
+
 Addiva Elektronik have released this project as Open Source to invite
 others in need of a similar framework to share and further improve on
 the founding ideas.
+
+```{.C .numberLines caption="This is the classic Hello World program in C"}
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Hello World!");
+    return 0;
+}
+```
 
 The rest of this document serves as an example of Markdown syntax.  Most
 of the contents is taken verbatim or derived from the Pandoc manual file
