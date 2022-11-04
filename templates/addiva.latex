@@ -216,7 +216,7 @@ $endif$
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
-\usepackage{xcolor}
+\usepackage[svgnames]{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
@@ -264,6 +264,10 @@ $if(listings)$
 \newcommand{\passthrough}[1]{#1}
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
+\usepackage{caption}
+\captionsetup{justification=justified,singlelinecheck=false}
+\usepackage[listings]{tcolorbox}
+\lstset{frame=single,captionpos=b,backgroundcolor=\color{WhiteSmoke},basicstyle=\footnotesize\ttfamily}
 $endif$
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
