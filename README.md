@@ -114,8 +114,11 @@ are supported in the (optional) Yaml frontmatter.  However, to enable
 the Addiva specific document header variants a couple of extra variables
 have been addded.  These are described in this section.
 
-Here is an example of a YAML frontmatter.  It goes at the very top of
-the document.  Notice the starting and closing `---`:
+Here is an example of a YAML frontmatter, which goes at the very top of
+the document.  *Most relevant options* are under `document:`, the rest
+can be omitted completely.
+
+Notice the starting and closing `---` of the frontmatter:
 
 ```yaml
 ---
@@ -125,14 +128,17 @@ document:
   organisation: Addiva Elektronik AB
   approved:
 copyright:
-  holder: Addiva Elektroni AB
+  holder: Addiva Elektronik AB
 classoption: twoside
 header-includes:
   - \usepackage{draftwatermark}
-fontenc: LY1
 fontsize: 11pt
-fontfamily: sourcesanspro
-fontfamilyoptions: default
+mainfont: SourceSerifPro-Regular.otf
+mainfontoptions: Numbers=OldStyle
+sansfont: SourceSansPro-Regular.otf
+sansfontoptions: Numbers=OldStyle
+monofont: SourceCodePro-Regular.otf
+monofontoptions: Scale=0.75
 ---
 ```
 
@@ -147,11 +153,18 @@ fontfamilyoptions: default
      source file's *object hash* and last change *GIT revision* of
      the file: `name:object-revision`.  Note: the `-revision` part
 	 is *always* added to the document number.
- * `copyright:` enables a copyright footer
+ * `copyright:` enables a copyright footer (type custom text here), or
+   fall back to the default by setting either of the following options:
    * `year:` sets the optional copyright years field, e.g., "2021-2022",
      default: automatically sets current year
    * `holder`: defaults to the organisation (above), or "Addiva
      Elektronik AB" if organisation is unset
+ * `fontsize:` optional
+ * `*font:` optional, the xelatex pandoc options are used with fallback
+   to the Adobe Source{Sans,Serif,Code}-Regular.otf family
+ * `*fontoptions:` optional, needs the corresponding `*font:` option to
+   be set to take effect.  Default is `Numbers=OldStyle` for Sans and
+   Serif fonts, and `Scale=0.0` for the monofont
 
 > **Note:** the `classoption`, includes, and font variables are for the
 > PDF generation (via LaTeX).  Also, only PDF document support the DRAFT
