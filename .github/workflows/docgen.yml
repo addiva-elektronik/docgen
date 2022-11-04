@@ -18,9 +18,6 @@ jobs:
     container:
       image: ghcr.io/addiva-elektronik/pandoc
     steps:
-      - name: Dependencies
-        run: |
-          sudo apt-get -y install texlive-xetex
       - uses: actions/checkout@v2
       - name: Generate documentation
         run: |
