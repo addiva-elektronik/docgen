@@ -1,6 +1,6 @@
 .PHONY: all clean release preview serve
 
-srcs    := $(shell find . -mindepth 2 -path "./docgen/*.md" -o -name '*.md' -print | sort)
+srcs    := $(shell find . -mindepth 2 -path "./docgen/*.md" -o -name '[^.]*.md' -print | sort)
 objs    := $(srcs:.md=.html) $(srcs:.md=.pdf)
 
 docgen  := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
