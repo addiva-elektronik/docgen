@@ -130,8 +130,6 @@ document:
 copyright:
   holder: Addiva Elektronik AB
 classoption: twoside
-header-includes:
-  - \usepackage{draftwatermark}
 fontsize: 11pt
 mainfont: SourceSerifPro-Regular.otf
 mainfontoptions: Numbers=OldStyle
@@ -145,7 +143,8 @@ monofontoptions: Scale=0.75
  * `document:` enables the document header
    * `name:` sets the `Document name` field
    * `prepared:` sets the `Prepared by` field
-   * `approved:` sets the `Approved by` field
+   * `approved:` sets the `Approved by` field, if unset PDF documents
+     will have a **DRAFT** watermark applied
    * `organisation:` enables the optional `Organisation` field right of
      the logo
    * `number`: sets `Document No` field, defaults to an automatically

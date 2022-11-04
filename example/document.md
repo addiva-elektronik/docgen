@@ -7,8 +7,6 @@ document:
 copyright:
   year: 1974-2022
 classoption: twoside
-header-includes:
-  - \usepackage{draftwatermark}
 fontsize: 11pt
 toc: true
 ---
