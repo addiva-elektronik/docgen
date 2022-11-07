@@ -37,6 +37,9 @@ build: $(objs)
 		done;							\
 	done
 
+autobuild:
+	while inotifywait $(srcs); do $(MAKE) build; done
+
 upload: all
 	rsync -vr --delete output/ 172.21.104.40:/var/www/addiva/
 
