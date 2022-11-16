@@ -16,13 +16,18 @@ $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
   <style>
     $styles.html()$
-@import url(https://fonts.googleapis.com/css?family=Lato:700,700italic|Merriweather:300,300italic,700);
-
+/*
+ * Google Fonts don't carry old-style numerals for most (any?) type faces.
+ * It seems to be a well-documented decision to default to lining numerals
+ * https://github.com/google/fonts/issues/1780
+ */
 body {
     background-color:#f1f1f1;
-    font-family: Merriweather;
+    font-family: Noto Serif, serif;
     font-weight: 300;
     font-size: 100%;     /* flexible baseline */
+    font-variant-numeric: oldstyle-nums;
+    font-feature-settings: "onum";
     line-height: 1.2;
     text-align: center; /*For IE6 Shenanigans*/
 
@@ -32,8 +37,7 @@ body {
 }
 
 h1, h2, h3,  h4, h5, h6 {
-    font-family: Lato;
-    font-weight: 700;
+    font-family: Noto Sans, sans;
 }
 
 h1 {

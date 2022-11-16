@@ -125,22 +125,52 @@ $if(mathspec)$
 $else$
   \usepackage{unicode-math}
 $endif$
+  % See fontspec package for details on syntax, notice Path is unused.
+  % https://ctan.math.illinois.edu/macros/unicodetex/latex/fontspec/fontspec.pdf
+  % The following was taken from the great answer at TeXexchange,
+  % https://tex.stackexchange.com/a/646794/173260
+  % See also the excellent TUGboat article on XeTeX Fonts by Will Robertson
+  % https://tug.org/TUGboat/tb26-3/tb84robertson.pdf
+  \defaultfontfeatures[SourceSerifPro]{
+    %Path=./static/fonts/sourceserif/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularIt,
+    BoldItalicFont=*-BoldIt
+  }
+  \defaultfontfeatures[SourceSansPro]{
+    %Path=./static/fonts/sourcesans/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularIt,
+    BoldItalicFont=*-BoldIt
+  }
+  \defaultfontfeatures[SourceCodePro]{
+    %Path=./static/fonts/sourcecode/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularIt,
+    BoldItalicFont=*-BoldIt
+  }
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
 $else$
-  \setmainfont[Numbers=OldStyle]{SourceSerifPro-Regular.otf}
+  \setmainfont[Numbers=OldStyle]{SourceSerifPro}
 $endif$
 $if(sansfont)$
   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
 $else$
-  \setsansfont[Numbers=OldStyle]{SourceSansPro-Regular.otf}
+  \setsansfont[Numbers=OldStyle]{SourceSansPro}
 $endif$
 $if(monofont)$
   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
 $else$
-  \setmonofont[Scale=0.9]{SourceCodePro-Regular.otf}
+  \setmonofont[Scale=0.9]{SourceCodePro}
 $endif$
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
