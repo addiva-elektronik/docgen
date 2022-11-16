@@ -28,7 +28,7 @@ __________________        ____________________________________________
                   |      |dwb
 ```
 
-Addiva Elektronik have released this project as Open Source to invite
+Addiva Elektronik have released this project as *Open Source* to invite
 others in need of a similar framework to share and further improve on
 the founding ideas.
 
@@ -42,9 +42,9 @@ int main(void)
 }
 ```
 
-The rest of this document serves as an example of Markdown syntax.  Most
-of the contents is taken verbatim or derived from the Pandoc manual file
-[MANUAL.TXT][].
+The rest of this document serves as an **example** of Markdown syntax.
+Most of the contents is taken verbatim from, or derived fromm the Pandoc
+manual file [MANUAL.TXT][].
 
  - <https://pandoc.org/MANUAL.html#pandocs-markdown>
 
@@ -64,8 +64,8 @@ easy to read:
 
 > A Markdown-formatted document should be publishable as-is, as plain
 > text, without looking like it's been marked up with tags or formatting
-> instructions.
-> -- [John Gruber](https://daringfireball.net/projects/markdown/syntax#philosophy)
+> instructions.  
+>   -- [John Gruber](https://daringfireball.net/projects/markdown/syntax#philosophy)
 
 This principle has guided pandoc's decisions in finding syntax for
 tables, footnotes, and other extensions.
