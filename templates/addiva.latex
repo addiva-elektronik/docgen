@@ -297,6 +297,7 @@ $if(listings)$
 \usepackage{caption}
 \captionsetup{justification=justified,singlelinecheck=false}
 \usepackage[listings]{tcolorbox}
+\renewcommand{\lstlistingname}{Figure}
 \lstset{frame=single,captionpos=b,backgroundcolor=\color{WhiteSmoke},basicstyle=\footnotesize\ttfamily}
 $endif$
 $if(lhs)$
