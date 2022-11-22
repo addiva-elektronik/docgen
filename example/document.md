@@ -6,6 +6,7 @@ document:
   approved:
 copyright:
   year: 1974-2022
+numbersections: true
 classoption: twoside
 fontsize: 11pt
 toc: true

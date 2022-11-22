@@ -129,6 +129,7 @@ document:
   approved:
 copyright:
   holder: Addiva Elektronik AB
+numbersections: true
 classoption: twoside
 fontsize: 11pt
 mainfont: SourceSerifPro-Regular.otf
@@ -158,6 +159,9 @@ monofontoptions: Scale=0.75
      default: automatically sets current year
    * `holder`: defaults to the organisation (above), or "Addiva
      Elektronik AB" if organisation is unset
+ * `numbersections`: optional, if set to `true` the PDF will used
+   numbered sections (this is what most readers expect)
+ * `classoption`: optional, used for PDF generation (LaTeX class option)
  * `fontsize:` optional
  * `*font:` optional, the xelatex pandoc options are used with fallback
    to the Adobe Source{Sans,Serif,Code}-Regular.otf family
