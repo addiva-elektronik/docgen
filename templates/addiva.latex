@@ -295,7 +295,7 @@ $if(listings)$
 \lstset{defaultdialect=[5.3]Lua}
 \lstset{defaultdialect=[x86masm]Assembler}
 \usepackage{caption}
-\captionsetup{justification=justified,singlelinecheck=false}
+\captionsetup{justification=centering,singlelinecheck=false}
 \usepackage[listings]{tcolorbox}
 \renewcommand{\lstlistingname}{Figure}
 \lstset{frame=single,captionpos=b,backgroundcolor=\color{WhiteSmoke},basicstyle=\footnotesize\ttfamily}
