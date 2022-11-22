@@ -27,14 +27,14 @@ all: build
 
 build: $(objs)
 	mkdir -p output
-	for obj in $(objs); do						\
-		dir=`dirname $$obj`;					\
-		mkdir -p output/$$dir;					\
-		mv $$obj output/$$dir/;					\
-		cp -f $(docgen)/templates/logo.png output/$$dir/;	\
-		for img in `find $$dir -name '*.png'`; do		\
-			cp -vf $$img output/$$dir/$$igmp;		\
-		done;							\
+	for obj in $(objs); do						   \
+		dir=`dirname $$obj`;					   \
+		mkdir -p output/$$dir;					   \
+		mv $$obj output/$$dir/;					   \
+		cp -f $(docgen)/templates/logo.png output/$$dir/;	   \
+		for img in `find $$dir -name '*.png' -o -name '*.svg'`; do \
+			cp -vf $$img output/$$dir/$$igmp;		   \
+		done;							   \
 	done
 
 autobuild:
