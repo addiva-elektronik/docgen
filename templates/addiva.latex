@@ -498,6 +498,13 @@ $endif$
 %\usepackage{inconsolata}
 %\usepackage{hfoldsty}
 
+%%%%%%%%%%%%%%%%%%
+% https://learnbyexample.github.io/customizing-pandoc/
+%\usepackage{tcolorbox}
+\newtcolorbox{myquote}{colback=WhiteSmoke!5!white, colframe=WhiteSmoke!75!black}
+\renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+%%%%%%%%%%%%%%%%%%
+
 % Verbatim
 \usepackage{fancyvrb}
 \fvset{fontsize=\small}
