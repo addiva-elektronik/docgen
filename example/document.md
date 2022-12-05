@@ -49,6 +49,40 @@ manual file [MANUAL.TXT][].
 
  - <https://pandoc.org/MANUAL.html#pandocs-markdown>
 
+\newpage
+
+Example of UTF-8 charachters supported by the rendering engine (XeTeX)
+and the current fontset.  For more examples and possible replacements,
+see <https://unicode-table.com/en/emoji/>, and
+<https://www.utf8-chartable.de/unicode-utf8-table.pl?start=9728>.
+
+| **Unicode** | **Character** | **Name**               |
+|-------------|---------------|------------------------|
+| U+00A6      | ¦             | Broken Bar             |
+| U+00A9      | ©             | Copyright Sign         |
+| U+00A9      | ®             | Registered Sign        |
+| U+2122      | ™             | Trade Mark Sign        |
+| U+00B0      | °             | Degree Sign            |
+| U+03A9      | Ω             | Ohm Symbol             |
+| U+25FC      | ◼             | Black Medium Square    |
+| U+2600      | ☀             | Black Sun with Rays    |
+| U+263c      | ☼             | White Sun with Rays    |
+| U+2601      | ☁             | Cloud                  |
+| U+2602      | ☂             | Umbrella               |
+| U+2603      | ☃             | Snowman                |
+| U+2605      | ★             | Black Star             |
+| U+260E      | ☎             | Black Telephone        |
+| U+2638      | ☸             | Wheel of Dharma        |
+| U+2639      | ☹             | White Frowning Face    |
+| U+263A      | ☺             | White Smiling Face     |
+| U+263B      | ☻             | Black Smiling Face     |
+| U+26AB      | ⚫            | Medium Black Circle    |
+| U+2764      | ❤             | Black Heart Symbol     |
+| U+270B      | ✋            | Raised Hand            |
+| U+270D      | ✍             | Writing Hand           |
+| U+2714      | ✔             | Heavy Check Mark       |
+| U+27A1      | ➡             | Black Rightwards Arrow |
+
 
 \newpage
 Pandoc's Markdown
