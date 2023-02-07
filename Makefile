@@ -30,7 +30,7 @@ build: $(objs)
 	for obj in $(objs); do						   \
 		dir=`dirname $$obj`;					   \
 		mkdir -p output/$$dir;					   \
-		mv $$obj output/$$dir/;					   \
+		cp $$obj output/$$dir/;					   \
 		cp -f $(docgen)/templates/logo.png output/$$dir/;	   \
 		for img in `find $$dir -name '*.png' -o -name '*.svg'`; do \
 			cp -vf $$img output/$$dir/$$igmp;		   \
