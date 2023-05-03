@@ -54,4 +54,4 @@ preview: $(objs)
 	x-www-browser file://`pwd`/output/
 
 serve: $(objs)
-	./server.sh $(srcs)
+	$(docgen)/server.sh $(srcs)
