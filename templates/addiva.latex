@@ -473,8 +473,10 @@ $endif$
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
-  linkcolor=black,
-  urlcolor=blue,
+  linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+  filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
+  citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
   bookmarks=true,
   bookmarksnumbered=true
 }
