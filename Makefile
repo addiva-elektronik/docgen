@@ -17,6 +17,9 @@ args    += -V gitversion="$(gitver)" -V date="$(gitdate)" -V today="$(shell date
 html-args = -t html $(args)
 pdf-args  = -t pdf  $(args) --pdf-engine=xelatex --listings
 
+ifdef V
+pdf-args += --verbose
+endif
 
 %.html: %.md
 	pandoc $(html-args) -o $@ $<
