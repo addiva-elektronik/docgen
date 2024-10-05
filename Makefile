@@ -11,7 +11,7 @@ gitrev   = $(shell git log -n 1 --pretty=format:-%h -- $< 2>/dev/null)
 gitdate  = $(shell git log -n 1 --pretty=format:%as -- $< 2>/dev/null)
 gitver   = $(repo):$(objhash)$(gitrev)
 args     = --standalone --data-dir=$(docgen) --template=addiva -f markdown+implicit_figures+implicit_header_references
-args    += --resource-path $(shell dirname $<) -V data-dir="$(docgen)" -V gitrev="$(gitrev)"
+args    += --resource-path $(shell dirname $<) -V data-dir="$(docgen)" -V gitrev="$(gitrev)" -V colorlinks
 args    += -V gitversion="$(gitver)" -V date="$(gitdate)" -V today="$(shell date --iso)" -V year=$(shell date +'%Y')
 
 html-args = -t html $(args)
