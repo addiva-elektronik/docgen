@@ -751,6 +751,9 @@ $endif$
 $endif$
 $endif$
 $if(abstract)$
+$if(abstract-newpage)$
+\clearpage
+$endif$
 \bigskip
 \leftskip1cm\relax
 \rightskip1cm\relax
