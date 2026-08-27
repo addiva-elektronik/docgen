@@ -26,6 +26,8 @@ $if(fontsize)$
 $endif$
 $if(papersize)$
   $papersize$paper,
+$else$
+  a4paper,
 $endif$
 $if(beamer)$
   ignorenonframetext,
@@ -528,7 +530,21 @@ $endif$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{a4wide}            % A4 dimensions
+% Horizontal text block.  Set explicitly rather than via a4wide, which is
+% deprecated and assumes the class was given a4paper.  Side margins are
+% symmetric; for double-sided binding use \sidemargin values that differ,
+% or load geometry with inner=/outer= instead.
+% Plain-LaTeX arithmetic: calc is not yet loaded at this point.
+\newlength{\sidemargin}
+\setlength{\sidemargin}{$if(sidemargin)$$sidemargin$$else$20mm$endif$}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-\sidemargin}
+\addtolength{\textwidth}{-\sidemargin}
+\setlength{\oddsidemargin}{\sidemargin}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\marginparwidth}{\sidemargin}
+\addtolength{\marginparwidth}{-4mm}
 %\usepackage[LY1]{fontenc}      % Output of Latin 1 fonts, prefer old style numerals
 \usepackage{calc}
 \usepackage{setspace}
@@ -575,19 +591,28 @@ $endif$
 
 % Verbatim
 \usepackage{fancyvrb}
-\fvset{fontsize=\small}
+\fvset{fontsize=\footnotesize}
 %\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
 \RecustomVerbatimEnvironment
   {verbatim}{Verbatim}
   {numbers=left,numberblanklines=false,frame=single,xleftmargin=0.5cm,xrightmargin=0cm}
 
-% Page margins
-%\setlength{\voffset}{5mm}
-%\setlength{\topskip}{5mm}
+% Vertical text block.  topmargin is negative on purpose: the document
+% header table is 41mm tall and starts near the paper edge.  textheight is
+% then derived so the bottom margin is what botmargin says, rather than
+% inherited from the class default, which does not track the paper size.
 \setlength{\topmargin}{-28mm}
 \setlength{\headheight}{41mm}
-\addtolength{\textheight}{-17mm}
 \addtolength{\footskip}{5mm}
+
+\newlength{\botmargin}
+\setlength{\botmargin}{$if(botmargin)$$botmargin$$else$25mm$endif$}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-1in}
+\addtolength{\textheight}{-\topmargin}
+\addtolength{\textheight}{-\headheight}
+\addtolength{\textheight}{-\headsep}
+\addtolength{\textheight}{-\botmargin}
 
 \renewcommand{\footruleskip}{10pt}
 
